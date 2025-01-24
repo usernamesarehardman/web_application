@@ -1,11 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--Metadata-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web App</title>
+    <title>Title</title>
+
+    <!--Import Style from static/css/style.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Welcome to My Web App!</h1>
+    <!--Text-->
+    <h1>Main Heading</h1> 
+    <h2>Subheading</h2>
+    <p>Paragraph</p>
+
+    <!--One-off Style-->
+    <p style="color: blue; font-size: 20px;">One-off Style.</p>
+
+    <!--Links-->
+    <p><a href="http://127.0.0.1:5000/">Internal Link</a></p>
+    <p><a href="static/image.jpg">Internal Link (Folder)</a></p>
+    <p><a href="https://www.example.com">External Link</a></p>
+    <p><a href="https://www.example.com" target="_blank">New Tab Link</a></p>
+    <p><a href="https://www.example.com" target="_blank" rel="noopener noreferrer">Secure New Tab Link</a></p>
+    <p><a href="static/image.jpg" download>Download Link (image.jpg)</a></p>
+    <p><a href="mailto:example@example.com">Mailto Link</a></p>
+    <p><a href="#target">Go to Target Section</a></p>
+
+    <!--Target-->
+    <h2 id="target">Target Section</h2>
+    <p>This is a target for the same page internal link.</p>
+
+    <!--Lists-->
+    <!--Use when the order of items does not matter-->
+    <ul>
+        <li>Unordered</li>
+        <li>List</li>
+    </ul>
+    <!--Use when the order of items is important-->
+    <ol>
+        <li>Ordered</li>
+        <li>List</li>
+    </ol>
+    <!--Use when you need to list terms and their definitions-->
+    <dl>
+        <dt>Term 1</dt>
+        <dd>Description of Term 1</dd>
+        <dt>Term 2</dt>
+        <dd>Description of Term 2</dd>
+    </dl>
+
+    <!--Images-->
+    <img src="static/image.jpg" alt="Description" width="300">
+
+    <!--Forms-->
+    <form action="/submit" method="POST">
+        <!-- Text Input -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <!-- Password Input -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <!-- Number Input -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age">
+        
+        <!-- Radio Buttons -->
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        
+        <!-- Checkbox -->
+        <label for="newsletter">Subscribe to newsletter</label>
+        <input type="checkbox" id="newsletter" name="newsletter">
+        
+        <!-- Textarea -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+        
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

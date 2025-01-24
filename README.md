@@ -35,7 +35,7 @@ pip install flask
 1. **Clone this repository**:
    ```bash
    git clone https://github.com/usernamesarehardman/web-application.git
-   cd web-app
+   cd web-application
     ```
 2. **Install Flask**:
    If you haven't already installed Flask, you can install it via `pip`:
@@ -55,8 +55,6 @@ pip install flask
 
 ## To-Do List / Planned Workflow
 
-Here’s the planned workflow for improving and adding new features to the web app:
-
 ### **Frontend Enhancements**
 - [ ] Improve styling using **CSS** or **Bootstrap**.
 - [ ] Add JavaScript interactivity, such as form validation and dynamic content.
@@ -71,16 +69,3 @@ Here’s the planned workflow for improving and adding new features to the web a
 ### **Frontend & Backend Integration**
 - [ ] Create **forms** in the frontend to send data to the backend.
 - [ ] Implement **AJAX** for asynchronous data exchange between frontend and backend.
-
-### **Testing and Debugging**
-- [ ] Write **unit tests** for backend routes and logic using **unittest** or **pytest**.
-- [ ] Use Flask’s built-in debugging tools to troubleshoot and resolve issues.
-
-### **Version Control**
-- [ ] Regularly commit changes to **Git**.
-- [ ] Push code updates to **GitHub**.
-- [ ] Use **branches** for new features and pull requests for merging.
-
-### **Deployment**
-- [ ] Deploy the app to a free hosting platform like **Render** or **Fly.io**.
-- [ ] Set up **continuous deployment** from GitHub for automatic updates.

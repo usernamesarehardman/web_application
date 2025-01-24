@@ -1,0 +1,127 @@
+/*
+!!!OU Official Colors!!!
+Primary: Oklahoma Crimson - #841617
+Neutrals: Black - #000000, Dark Gray - #323232, Light Gray - #f0f0f0, White - #ffffff
+Accents: Dark Crimson - #4e0002, Sky - #bcdceb, Leaf - #8ca57d, Stone - #beb4a5
+*/
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; /* Light Gray */
+    color: #323232; /* Dark Gray */
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* Transparent PNG background */
+    background: 
+        /* DIY opacity filter for logo using double gradient */
+        linear-gradient(rgb(255, 255, 255, 0.2), rgb(255, 255, 255, 0.2)), 
+        url('backgrounds/OUPI logo.png');
+    background-size: 100% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect */
+}
+
+/* Header */
+h1 {
+    font-size: 2.5em;
+    color: #841617; /* Oklahoma Crimson */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form container */
+form {
+    background-color: #ffffff; /* White */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Label styles */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 1.1em;
+    color: #323232; /* Dark Gray */
+}
+
+/* Input and text area styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #323232; /* Dark Gray */
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect for input fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #841617; /* Oklahoma Crimson */
+    outline: none;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    background-color: #841617; /* Oklahoma Crimson */
+    color: #ffffff; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+input[type="submit"]:hover {
+    background-color: #4e0002; /* Dark Crimson */
+}
+
+/* Checkbox and radio button styling */
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    input[type="submit"] {
+        font-size: 1em;
+    }
+}
