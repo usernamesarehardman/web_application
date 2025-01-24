@@ -55,7 +55,7 @@
     <img src="static/image.jpg" alt="Description" width="300">
 
     <!--Forms-->
-    <form action="/submit" method="POST">
+    <form id=form1, action="submit.html" method="POST">
         <!-- Text Input -->
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
@@ -90,5 +90,13 @@
         <!-- Submit Button -->
         <button type="submit">Submit</button>
     </form>
+
+    <!--Scripts-->
+    <script>
+        document.getElementById('form1').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = 'submit.html'; // Redirect to thank you page
+        });
+    </script>
 </body>
 </html>
