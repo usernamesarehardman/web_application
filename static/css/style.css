@@ -1,67 +1,131 @@
-/*
-!!!OU Official Colors!!!
-Primary: Oklahoma Crimson - #841617
-Neutrals: Black - #000000, Dark Gray - #323232, Light Gray - #f0f0f0, White - #ffffff
-Accents: Dark Crimson - #4e0002, Sky - #bcdceb, Leaf - #8ca57d, Stone - #beb4a5
-*/
+/* OU Official Colors */
+/* Primary: Oklahoma Crimson - #841617 */
+/* Neutrals: Black - #000000, Dark Gray - #323232, Light Gray - #f0f0f0, White - #ffffff */
+/* Accents: Dark Crimson - #4e0002, Sky - #bcdceb, Leaf - #8ca57d, Stone - #beb4a5 */
 
-/* Reset some default styles */
-* {
+/* Global Body */
+html, body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
-/* Body styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0; /* Light Gray */
-    color: #323232; /* Dark Gray */
-    line-height: 1.6;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    /* Transparent PNG background */
-    background: 
-        /* DIY opacity filter for logo using double gradient */
-        linear-gradient(rgb(255, 255, 255, 0.2), rgb(255, 255, 255, 0.2)), 
-        url('backgrounds/OUPI logo.png');
-    background-size: 100% auto;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Parallax effect */
-}
-
-/* Header */
 h1 {
     font-size: 2.5em;
-    color: #841617; /* Oklahoma Crimson */
+    color: #841617;
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Form container */
+/* Logo */
+.logo-container {
+    padding: 25px;
+}
+
+.logo-container img {
+    height: 50px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #841617;
+    padding: 10px 0;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+    padding: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 15px;
+    display: block;
+}
+
+.navbar ul li a:hover {
+    background-color: #ffffff;
+    color: #841617;
+}
+
+@media (min-width: 1024px) {
+    .navbar ul {
+        justify-content: flex-start; /* Align the links to the left */
+        margin-left: 10%; /* Adds a gap from the left */
+    }
+}
+
+/* Main */
+main {
+    padding: 20px;
+    margin-left: 20% auto;
+    flex: 1;
+}
+
+/* Drop box */
+#drop-area {
+    width: 600px;
+    height: 150px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    line-height: 150px;
+    margin: 50px auto;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#drop-area.dragging {
+    border-color: #000;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Forms */
 form {
-    background-color: #ffffff; /* White */
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
+    box-sizing: border-box;
+    width: 600px;
+    max-width: 100%;
     margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto
 }
 
-/* Label styles */
 label {
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
     font-size: 1.1em;
-    color: #323232; /* Dark Gray */
+    color: #f0f0f0;
 }
 
-/* Input and text area styling */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -70,26 +134,24 @@ select {
     width: 100%;
     padding: 10px;
     margin: 8px 0 20px 0;
-    border: 1px solid #323232; /* Dark Gray */
+    border: 1px solid #323232;
     border-radius: 4px;
     font-size: 1em;
     transition: border-color 0.3s ease;
 }
 
-/* Focus effect for input fields */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #841617; /* Oklahoma Crimson */
+    border-color: #841617;
     outline: none;
 }
 
-/* Submit button styling */
 input[type="submit"] {
-    background-color: #841617; /* Oklahoma Crimson */
-    color: #ffffff; /* White */
+    background-color: #841617;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     font-size: 1.2em;
@@ -99,15 +161,167 @@ input[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-/* Submit button hover effect */
 input[type="submit"]:hover {
-    background-color: #4e0002; /* Dark Crimson */
+    background-color: #4e0002;
 }
 
-/* Checkbox and radio button styling */
 input[type="checkbox"],
 input[type="radio"] {
     margin-right: 10px;
+}
+
+/* Floating Contact Button (SMS Icon) */
+.floating-contact-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    border-radius: 50%;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.floating-contact-button:hover {
+    background-color: #0056b3;
+}
+
+/* Floating Contact Form */
+.floating-contact-form {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    display: none; /* Initially hidden */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    transition: all 0.3s ease;
+}
+
+.floating-contact-form input,
+.floating-contact-form textarea,
+.floating-contact-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #ffffff;
+}
+
+.floating-contact-form input,
+.floating-contact-form textarea {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.floating-contact-form button {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.floating-contact-form button:hover {
+    background-color: #0056b3;
+}
+
+.floating-contact-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Floating Contact Button (SMS Icon) */
+.floating-contact-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    border-radius: 50%;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.floating-contact-button:hover {
+    background-color: #0056b3;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Prevent interaction when hidden */
+}
+
+.back-to-top:hover {
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Footer */
+footer {
+    background-color: #323232;
+    color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    margin-top: auto;
+    bottom: 0;
+}
+
+.social-links a {
+    color: #f0f0f0;
+    margin: 0 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
+
+/* Icons are currently not used */
+footer .social-icons a {
+    margin: 0 15px;
+    font-size: 25px;
+    color: #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #ffffff;
 }
 
 /* Responsive Design */

@@ -1,0 +1,72 @@
+# Ignore .pdf files
+*.pdf
+
+# Ignore all image types
+.jpg
+.jpeg
+# *.png
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.svg
+
+# Ignore dev directory
+dev/
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment and dependency files
+venv/
+.env
+.DS_Store
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore IDE and editor settings
+.vscode/
+.idea/
+*.swp
+
+# Ignore build and output directories
+/build/
+dist/
+*.out
+
+# Ignore OS-specific files
+Thumbs.db
+*.bak
+.AppleDouble
+.LSOverride
+
+# Ignore assignment submission backups
+*.backup
+*.old
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore coverage and testing files
+.coverage
+*.coverage
+*.coveragerc
+nosetests.xml
+pytest.xml
+
+# Ignore dependency management files (for Pipenv or Poetry)
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore additional editor files
+*.sublime-workspace
+*.sublime-project

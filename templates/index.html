@@ -1,102 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--Metadata-->
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>OUPI Web Application Testing Environment</title>
 
-    <!--Import Style from static/css/style.css-->
+    <!-- Import Style from static/css/style.css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- IDK if we can use this? -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!--Text-->
-    <h1>Main Heading</h1> 
-    <h2>Subheading</h2>
-    <p>Paragraph</p>
+    <!-- Header / Navigation -->
+    <div class="logo">
+        <img src="/static/images/oupi_logo.png" alt="OUPI Logo">
+    </div>
 
-    <!--One-off Style-->
-    <p style="color: blue; font-size: 20px;">One-off Style.</p>
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">Home</a></li>
+            <li><a href="#">About</a></li> <!-- not functional - no existing page)-->
+            <li><a href="#">Contact</a></li> <!-- not functional - no existing page)-->
+        </ul>
+    </nav>
 
-    <!--Links-->
-    <p><a href="http://127.0.0.1:5000/">Internal Link</a></p>
-    <p><a href="static/image.jpg">Internal Link (Folder)</a></p>
-    <p><a href="https://www.example.com">External Link</a></p>
-    <p><a href="https://www.example.com" target="_blank">New Tab Link</a></p>
-    <p><a href="https://www.example.com" target="_blank" rel="noopener noreferrer">Secure New Tab Link</a></p>
-    <p><a href="static/image.jpg" download>Download Link (image.jpg)</a></p>
-    <p><a href="mailto:example@example.com">Mailto Link</a></p>
-    <p><a href="#target">Go to Target Section</a></p>
+    <!-- Drag and Drop -->
+    <h1>Drag and Drop File Upload Test</h1>
+    <div id="drop-area">
+        <p>Drag your files here</p>
+        <form id="upload-form" action="/uploads" method="POST" enctype="multipart/form-data">
+            <input type="file" id="file-input" name="file" style="display: none;" />
+            <button type="button" id="browse-btn">Browse Files</button>
+            <button type="submit" id="upload-btn" disabled>Upload</button>
+        </form>
+        <!-- Display the selected file name -->
+        <div id="file-name-display" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
 
-    <!--Target-->
-    <h2 id="target">Target Section</h2>
-    <p>This is a target for the same page internal link.</p>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 16 12 8 18 16"></polyline>
+        </svg>
+    </button>
+    
+    <!-- Floating Contact Button -->
+    <div class="floating-contact-button">
+        <i class="fas fa-comment"></i> <!-- Font Awesome SMS Icon -->
+    </div>
+    
+    <!-- Floating Contact Form (not functional - no backend) -->
+    <div class="floating-contact-form">
+        <form action="process.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
 
-    <!--Lists-->
-    <!--Use when the order of items does not matter-->
-    <ul>
-        <li>Unordered</li>
-        <li>List</li>
-    </ul>
-    <!--Use when the order of items is important-->
-    <ol>
-        <li>Ordered</li>
-        <li>List</li>
-    </ol>
-    <!--Use when you need to list terms and their definitions-->
-    <dl>
-        <dt>Term 1</dt>
-        <dd>Description of Term 1</dd>
-        <dt>Term 2</dt>
-        <dd>Description of Term 2</dd>
-    </dl>
-
-    <!--Images-->
-    <img src="static/image.jpg" alt="Description" width="300">
-
-    <!--Forms-->
-    <form id=form1, action="submit.html" method="POST">
-        <!-- Text Input -->
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <!-- Password Input -->
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <!-- Email Input -->
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <!-- Number Input -->
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age">
-        
-        <!-- Radio Buttons -->
-        <label for="gender">Gender:</label>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label>
-        
-        <!-- Checkbox -->
-        <label for="newsletter">Subscribe to newsletter</label>
-        <input type="checkbox" id="newsletter" name="newsletter">
-        
-        <!-- Textarea -->
-        <label for="message">Message:</label>
-        <textarea id="message" name="message"></textarea>
-        
-        <!-- Submit Button -->
-        <button type="submit">Submit</button>
-    </form>
-
-    <!--Scripts-->
-    <script>
-        document.getElementById('form1').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            window.location.href = 'submit.html'; // Redirect to thank you page
-        });
-    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>
+        <script>
+             document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+        <p>OU-Tulsa Schusterman Center</p>
+        <p>4502 East 41st Street</p>
+        <p>Tulsa, OK 74135</p>
+        <div class="social-links">
+            <a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">Website</a>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">Placeholder</a>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">Placeholder</a>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
