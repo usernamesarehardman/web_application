@@ -24,12 +24,9 @@ h1 {
 }
 
 /* Logo */
-.logo-container {
-    padding: 25px;
-}
-
-.logo-container img {
-    height: 50px;
+.logo {
+    margin-left: 10%;
+    margin-right: auto;
 }
 
 /* Navbar */
@@ -58,14 +55,17 @@ h1 {
 
 .navbar ul li a {
     text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
     color: #ffffff;
-    padding: 10px 15px;
-    display: block;
+    padding: 15px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
 .navbar ul li a:hover {
-    background-color: #ffffff;
-    color: #841617;
+    background-color: #4e0002;
 }
 
 @media (min-width: 1024px) {
@@ -80,19 +80,20 @@ main {
     padding: 20px;
     margin-left: 20% auto;
     flex: 1;
+padding-bottom: 60px; /* Adjust based on footer height */
 }
 
 /* Drop box */
 #drop-area {
     width: 600px;
     height: 150px;
-    border: 2px dashed #ccc;
+    border: 2px dashed #f0f0f0;
     text-align: center;
     line-height: 150px;
     margin: 50px auto;
     cursor: pointer;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 #drop-area.dragging {
@@ -170,32 +171,12 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
-/* Floating Contact Button (SMS Icon) */
-.floating-contact-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #007bff;
-    border-radius: 50%;
-    padding: 12px;
-    color: #ffffff;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 9999;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-.floating-contact-button:hover {
-    background-color: #0056b3;
-}
-
 /* Floating Contact Form */
 .floating-contact-form {
     position: fixed;
     bottom: 80px;
     right: 20px;
-    background-color: #1f1f1f;
+    background-color: #f0f0f0;
     border-radius: 10px;
     padding: 20px;
     width: 300px;
@@ -213,8 +194,8 @@ input[type="radio"] {
     margin-bottom: 10px;
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: #333;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #841617;
 }
 
 .floating-contact-form input,
@@ -224,14 +205,14 @@ input[type="radio"] {
 }
 
 .floating-contact-form button {
-    background-color: #007bff;
+    background-color: #841617;
     color: #ffffff;
     font-size: 14px;
     cursor: pointer;
 }
 
 .floating-contact-form button:hover {
-    background-color: #0056b3;
+    background-color: #841617;
 }
 
 .floating-contact-form textarea {
@@ -242,11 +223,11 @@ input[type="radio"] {
 /* Floating Contact Button (SMS Icon) */
 .floating-contact-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #007bff;
+    bottom: 15px;
+    right: 40px;
+    background-color: #841617;
     border-radius: 50%;
-    padding: 12px;
+    padding: 20px;
     color: #ffffff;
     font-size: 20px;
     cursor: pointer;
@@ -256,7 +237,8 @@ input[type="radio"] {
 }
 
 .floating-contact-button:hover {
-    background-color: #0056b3;
+    background-color: #9d2628;
+    border-radius: 75%;
 }
 
 /* Back to Top Button */
@@ -294,11 +276,18 @@ footer {
     background-color: #323232;
     color: #f0f0f0;
     padding: 20px;
-    text-align: center;
+    text-align: left;
     width: 100%;
     position: relative;
     margin-top: auto;
     bottom: 0;
+    font-size: 0.75em;
+}
+
+footer .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .social-links a {
@@ -338,4 +327,23 @@ footer .social-icons a:hover {
     input[type="submit"] {
         font-size: 1em;
     }
+
+    /* Ensure footer does not overlap content on smaller screens */
+    footer {
+        position: relative;
+    }
+
+    /* Add padding to the main content area on smaller screens */
+    main {
+        padding-bottom: 80px; /* Adjust based on footer height */
+    }
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #f0f0f0;
+    margin: 1em auto;
+    padding: 0;
 }

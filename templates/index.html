@@ -14,14 +14,14 @@
 <body>
     <!-- Header / Navigation -->
     <div class="logo">
-        <img src="/static/images/oupi_logo.png" alt="OUPI Logo">
+        <img src="/static/images/oupi_logo_w-ClearS.png" alt="OUPI Logo">
     </div>
 
     <nav class="navbar">
         <ul>
-            <li><a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">Home</a></li>
-            <li><a href="#">About</a></li> <!-- not functional - no existing page)-->
-            <li><a href="#">Contact</a></li> <!-- not functional - no existing page)-->
+            <li><a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">HOME</a></li>
+            <li><a href="#">ABOUT</a></li> <!-- not functional - no existing page)-->
+            <li><a href="#">CONTACT</a></li> <!-- not functional - no existing page)-->
         </ul>
     </nav>
 
@@ -36,6 +36,21 @@
         </form>
         <!-- Display the selected file name -->
         <div id="file-name-display" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
+    <!-- FIXME: On smaller screens this section gets covered up by the footer -->
+    <!-- FIXME: Upload functionality not working on some devices; see script.js -->
+
+    <!-- Temporary -->
+    <div>
+        <h2>Uploaded Files</h2>
+        <ul>
+            {% for file in files %}
+                <li>{{ file }}</li>
+            {% endfor %}
+        </ul>
+        <p>
+            <a href="/../uploads/submit.html">Download All Files</a>
+        </p>
     </div>
 
     <!-- Back to Top Button -->
@@ -69,6 +84,7 @@
         <p>OU-Tulsa Schusterman Center</p>
         <p>4502 East 41st Street</p>
         <p>Tulsa, OK 74135</p>
+        <hr/>
         <div class="social-links">
             <a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">Website</a>
             <a href="https://example.com" target="_blank" rel="noopener noreferrer">Placeholder</a>

@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--Metadata-->
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
 
-    <!--Import Style from static/css/style.css-->
+    <!-- Import Style from static/css/style.css -->
+    <!-- NOTE: This is for when using flask to host -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -16,10 +17,10 @@
     <h2>Subheading</h2>
     <p>Paragraph</p>
 
-    <!--One-off Style-->
+    <!-- One-off Style -->
     <p style="color: blue; font-size: 20px;">One-off Style.</p>
 
-    <!--Links-->
+    <!-- Links -->
     <p><a href="http://127.0.0.1:5000/">Internal Link</a></p>
     <p><a href="static/image.jpg">Internal Link (Folder)</a></p>
     <p><a href="https://www.example.com">External Link</a></p>
@@ -29,22 +30,22 @@
     <p><a href="mailto:example@example.com">Mailto Link</a></p>
     <p><a href="#target">Go to Target Section</a></p>
 
-    <!--Target-->
+    <!-- Target -->
     <h2 id="target">Target Section</h2>
     <p>This is a target for the same page internal link.</p>
 
-    <!--Lists-->
-    <!--Use when the order of items does not matter-->
+    <!-- Lists -->
+    <!-- Use when the order of items does not matter -->
     <ul>
         <li>Unordered</li>
         <li>List</li>
     </ul>
-    <!--Use when the order of items is important-->
+    <!-- Use when the order of items is important -->
     <ol>
         <li>Ordered</li>
         <li>List</li>
     </ol>
-    <!--Use when you need to list terms and their definitions-->
+    <!-- Use when you need to list terms and their definitions -->
     <dl>
         <dt>Term 1</dt>
         <dd>Description of Term 1</dd>
@@ -52,10 +53,10 @@
         <dd>Description of Term 2</dd>
     </dl>
 
-    <!--Images-->
+    <!-- Images -->
     <img src="static/image.jpg" alt="Description" width="300">
 
-    <!--Forms-->
+    <!-- Forms -->
     <form id=form1, action="submit.html" method="POST">
         <!-- Text Input -->
         <label for="username">Username:</label>
@@ -92,7 +93,7 @@
         <button type="submit">Submit</button>
     </form>
 
-    <!--Scripts-->
+    <!-- Included Scripts -->
     <script>
         document.getElementById('form1').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
