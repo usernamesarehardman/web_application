@@ -1,4 +1,3 @@
-<!-- This is currently not being used -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +5,13 @@
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You for Submitting</title>
+    <title>Contact</title>
 
     <!-- Styles and icons from Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom styles from static/css/styles.css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
-    <!-- Custom styles for this page -->
 
 </head>
 <body>
@@ -40,14 +37,25 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="card text-center">
-            <div class="card-body">
-                <h1 class="arboria-black text-center">Thank You for Your Submission!</h1>
-                <p>Your form has been successfully submitted. We will get back to you shortly.</p>
-            </div>
+    <!-- Placeholder contact page -->
+    <!-- TODO: Form is ugly, also not responsive -->
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your Name">
         </div>
-    </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Your Email">
+        </div>
+        <div class="col-12">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Send Message</button>
+        </div>
+    </form>
 
     <footer class="bg-dark-gray text-light-gray text-left py-3 mt-5">
         <div class="container">

@@ -2,14 +2,17 @@
 *.pdf
 
 # Ignore all image types
-.jpg
-.jpeg
-# *.png
+*.jpg
+*.jpeg
+*.png
 *.gif
 *.bmp
 *.tiff
 *.webp
 *.svg
+
+# Ignore bootstrap examples
+/bootstrap-5.3.3-examples/
 
 # Ignore dev directory
 dev/

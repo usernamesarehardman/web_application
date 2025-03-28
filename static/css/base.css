@@ -1,0 +1,65 @@
+:root {
+    /* OU Official Colors */
+    --ok-crimson: #841617;
+
+    /* Neutral Colors */
+    --black: #000000;
+    --dark-gray: #323232;
+    --light-gray: #f0f0f0;
+    --white: #ffffff;
+
+    /* Accent Colors */
+    --dark-crimson: #4e0002;
+    --sky: #bcdceb;
+    --leaf: #8ca57d;
+    --stone: #beb4a5;
+
+    /* Global Styles */
+    --background-color: var(--white);
+    --text-color: var(--black);
+    --font-family-default: 'Arboria', sans-serif;
+    --font-family-headline: 'Mongoose', sans-serif;
+    --font-family-subhead: 'Obviously Wide', sans-serif;
+    --font-family-body: 'Freight Text Pro', serif;
+    --border-radius: 8px;
+    --transition-speed: 0.3s ease-in-out;
+}
+
+/* General Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family-default);
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: var(--font-family-headline);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Subhead styles */
+.subhead {
+    font-family: var(--font-family-subhead);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: -1px -1px 0 var(--text-color), 1px 1px 0 var(--text-color);
+}
+
+.subhead-serif {
+    font-family: var(--font-family-body);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Emphasis */
+em {
+    font-family: var(--font-family-body);
+    font-weight: 900;
+    font-style: italic;
+}

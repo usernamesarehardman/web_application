@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OUPI Web Application Testing Environment</title>
+
+    <!-- Import Styles from Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Import Styles from static/css/styles.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Import Icons from Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- IDK if we can use this? -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <div class="image-container">
+        <div class="logo">
+            <img src="/static/images/oupi_logo_w-ClearS.png" width="1212" height="248" alt="OUPI Logo">
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">HOME</a></li>
+            <li><a href="#">ABOUT</a></li> <!-- not functional - no existing page)-->
+            <li><a href="#">CONTACT</a></li> <!-- not functional - no existing page)-->
+        </ul>
+    </nav>
+
+    <!-- Title and Explanation -->
+    <div class="container mt-5">
+        <h1 class="text-center">Drag-and-Drop File Upload Test</h1>
+        <p class="lead text-center">Welcome to the drag-and-drop file upload test environment.
+        This page is designed to help you test the functionality of uploading files through a simple and user-friendly interface.
+        Here, you can easily drag files from your local system and drop them into the designated area to initiate the upload process. 
+        The goal of this test is to ensure smooth file handling, error-free uploads, and a seamless user experience across various devices and browsers. 
+        Please follow the on-screen instructions to upload files. 
+        Make sure to only upload supported file types and check the status messages for any errors or successes during the upload process.</p>
+    </div>
+
+    <!-- Drag and Drop Feature -->
+    <div class="container">
+        <div id="drop-area">
+            <p>Drag your files here</p>
+            <form id="upload-form" action="/uploads" method="POST" enctype="multipart/form-data">
+                <input type="file" id="file-input" name="file" style="display: none;" />
+                <button type="button" id="browse-btn">Browse Files</button>
+                <button type="submit" id="upload-btn" disabled>Upload</button>
+            </form>
+            <!-- Display the selected file name -->
+            <div id="file-name-display" style="margin-top: 20px; font-weight: bold;"></div>
+        </div>
+        <!-- FIXME: On smaller screens this section gets covered up by the footer -->
+        <!-- FIXME: Upload functionality not working on some devices; see main.js -->
+    </div>
+
+    <!-- Temporary -->
+    <div class="container">
+        <h2>Uploaded Files</h2>
+        <ul>
+            {% for file in files %}
+                <li>{{ file }}</li>
+            {% endfor %}
+        </ul>
+        <p>
+            <a href="/uploads/submit.html">Download All Files</a>
+        </p>
+    </div>
+    <div class="container mt-5">
+        <h1 class="text-center">Hello, Bootstrap!</h1>
+        <p class="lead text-center">You're using Bootstrap inside VS Code.</p>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="bi bi-arrow-up-circle" style="font-size: 40px; color: black;"></i> <!-- Bootstrap Icons Upwards Arrow -->
+    </button>
+    
+    <!-- Floating Contact Button -->
+    <div class="floating-contact-button">
+        <i class="bi bi-chat-left"></i>
+    </div>
+    
+    <!-- Floating Contact Form (not functional - no backend) -->
+    <div class="floating-contact-form">
+        <form action="process.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Font Testing -->
+    <div class="container mt-5">
+        <!-- Headers */ -->
+        <div class="font-variation">
+            <h1 class="mongoose-bold">Mongoose Bold Heading 1</h1>
+            <h2 class="mongoose-bold">Mongoose Bold Heading 2</h2>
+            <h3 class="mongoose-bold">Mongoose Bold Heading 3</h3>
+        </div>
+        <div class="font-variation"></div>
+            <h1 class="arboria-black">Arboria Black Heading 1</h1>
+            <h2 class="arboria-black">Arboria Black Heading 2</h2>
+            <h3 class="arboria-black">Arboria Black Heading 3</h3>
+        </div>
+
+        <!-- Subheaders -->
+        <div class="font-variation">
+            <h4 class="obviously-wide-semibold">Obviously Wide Semibold Subhead</h4>
+            <h4 class="freight-text-pro-bold">Freight Text Pro Bold Subhead</h4>
+            <h4 class="arboria-black-subhead">Arboria Black Subhead</h4>
+        </div>
+
+        <!-- Body Variations -->
+        <div class="font-variation">
+            <p class="arboria-bold">This is a body paragraph in Arboria Bold</p>
+            <p class="arboria-bold-italic">This is a body paragraph in Arboria Bold Italic</p>
+        </div>
+        <div class="font-variation">
+            <p class="arboria-medium">This is a body paragraph in Arboria Medium</p>
+            <p class="arboria-medium-italic">This is a body paragraph in Arboria Medium Italic</p>
+        </div>
+        <div class="font-variation">
+            <p class="arboria-book">This is a body paragraph in Arboria Book</p>
+            <p class="arboria-book-italic">This is a body paragraph in Arboria Book Italic</p>
+        </div>
+        <div class="font-variation">
+            <p class="freight-text-pro-black">This is a body paragraph in Freight Text Pro Black</p>
+            <p class="freight-text-pro-black-italic">This is a body paragraph in Freight Text Pro Black Italic</p>
+        </div>
+        <div class="font-variation">
+            <p class="freight-text-pro-semibold">This is a body paragraph in Freight Text Pro Semibold</p>
+            <p class="freight-text-pro-semibold-italic">This is a body paragraph in Freight Text Pro Semibold Italic</p>
+        </div>
+        <div class="font-variation">
+            <p class="freight-text-pro-book">This is a body paragraph in Freight Text Pro Book</p>
+            <p class="freight-text-pro-book-italic">This is a body paragraph in Freight Text Pro Black Book Italic</p>
+        </div>   
+    </div>
+
+    <!-- Navbar Testing -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Website</a>
+        </div>
+    </nav>
+
+    <!-- Container Testing -->
+    <div class="container mt-5">
+        <h1 class="text-center">Welcome to My Bootstrap Site</h1>
+        <p class="lead text-center">Bootstrap makes web design easier!</p>
+    </div>
+
+    <!-- Cards Testing -->
+    <div class="card" style="width: 18rem;">
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Sample Image">
+        <div class="card-body">
+            <h5 class="card-title">Card Title</h5>
+            <p class="card-text">Some text inside the card.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Forms Testing -->
+    <form>
+        <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="Enter email">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+    <!-- Grid Testing -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 bg-primary text-white">Column 1 (50%)</div>
+            <div class="col-md-6 bg-secondary text-white">Column 2 (50%)</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>
+        <script>
+             document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+        <p>OU-Tulsa Schusterman Center</p>
+        <p>4502 East 41st Street</p>
+        <p>Tulsa, OK 74135</p>
+        <hr/>
+        <div class="social-links">
+            <a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">Website</a>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">Placeholder</a>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">Placeholder</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

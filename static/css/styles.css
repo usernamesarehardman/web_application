@@ -1,32 +1,20 @@
-/* OU Official Colors */
-/* Primary: Oklahoma Crimson - #841617 */
-/* Neutrals: Black - #000000, Dark Gray - #323232, Light Gray - #f0f0f0, White - #ffffff */
-/* Accents: Dark Crimson - #4e0002, Sky - #bcdceb, Leaf - #8ca57d, Stone - #beb4a5 */
+@import url("base.css");
+@import url("fonts.css");
+@import url("navbar.css");
+@import url("footer.css");
+@import url("forms.css");
+@import url("components.css");
 
-/* Global Body */
-html, body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-}
-
-h1 {
-    font-size: 2.5em;
-    color: #841617;
-    text-align: center;
-    margin-bottom: 20px;
-}
+/* TODO: This needs to be cleaned up */
 
 /* Logo */
 .logo {
+    width: 300px; 
+    height: 300px;
     margin-left: 10%;
     margin-right: auto;
+    display: flex;
+    object-fit: cover;
 }
 
 /* Navbar */
@@ -37,7 +25,7 @@ h1 {
     position: sticky;
     top: 0;
     z-index: 999;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(96, 23, 23, 0.2);
 }
 
 .navbar ul {
@@ -70,8 +58,12 @@ h1 {
 
 @media (min-width: 1024px) {
     .navbar ul {
-        justify-content: flex-start; /* Align the links to the left */
-        margin-left: 10%; /* Adds a gap from the left */
+        justify-content: flex-start;
+        margin-left: 10%;
+    }
+    .logo {
+        justify-content: flex-start;
+        margin-left: 10%;
     }
 }
 
@@ -80,7 +72,7 @@ main {
     padding: 20px;
     margin-left: 20% auto;
     flex: 1;
-padding-bottom: 60px; /* Adjust based on footer height */
+    padding-bottom: 60px;
 }
 
 /* Drop box */
@@ -239,6 +231,7 @@ input[type="radio"] {
 .floating-contact-button:hover {
     background-color: #9d2628;
     border-radius: 75%;
+    transform: scale(1.1);
 }
 
 /* Back to Top Button */
@@ -272,20 +265,23 @@ input[type="radio"] {
 }
 
 /* Footer */
+.footer-push {
+    flex: 1; /* Pushes the footer to the bottom */
+}
+
 footer {
-    background-color: #323232;
-    color: #f0f0f0;
-    padding: 20px;
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
     text-align: left;
+    padding: 1rem 0;
     width: 100%;
     position: relative;
-    margin-top: auto;
     bottom: 0;
     font-size: 0.75em;
 }
 
 footer .footer-container {
-    max-width: 1200px;
+    max-width: auto;
     margin: 0 auto;
     padding: 0 20px;
 }

@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OUPI Web Application Testing Environment</title>
 
-    <!-- Import Style from static/css/style.css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- IDK if we can use this? -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Styles and icons from Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom styles from static/css/styles.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
 </head>
 <body>
-    <!-- Header / Navigation -->
-    <div class="logo">
-        <img src="/static/images/oupi_logo_w-ClearS.png" alt="OUPI Logo">
+
+    <!-- Logo -->
+    <div class="container text-center my-4">
+        <img src="/static/images/oupi_logo_w-ClearS.png" class="img-fluid" alt="OUPI Logo">
     </div>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">HOME</a></li>
-            <li><a href="#">ABOUT</a></li> <!-- not functional - no existing page)-->
-            <li><a href="#">CONTACT</a></li> <!-- not functional - no existing page)-->
-        </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-ok-crimson">
+        <div class="container">
+            <!-- TODO: Make this left-justified -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/" target="_blank" rel="noopener noreferrer">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about" target="_blank" rel="noopener noreferrer">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <!-- Drag and Drop -->
-    <h1>Drag and Drop File Upload Test</h1>
-    <div id="drop-area">
-        <p>Drag your files here</p>
-        <form id="upload-form" action="/uploads" method="POST" enctype="multipart/form-data">
-            <input type="file" id="file-input" name="file" style="display: none;" />
-            <button type="button" id="browse-btn">Browse Files</button>
-            <button type="submit" id="upload-btn" disabled>Upload</button>
-        </form>
-        <!-- Display the selected file name -->
-        <div id="file-name-display" style="margin-top: 20px; font-weight: bold;"></div>
-    </div>
-    <!-- FIXME: On smaller screens this section gets covered up by the footer -->
-    <!-- FIXME: Upload functionality not working on some devices; see script.js -->
-
-    <!-- Temporary -->
-    <div>
-        <h2>Uploaded Files</h2>
-        <ul>
-            {% for file in files %}
-                <li>{{ file }}</li>
-            {% endfor %}
-        </ul>
-        <p>
-            <a href="/../uploads/submit.html">Download All Files</a>
-        </p>
+    <!-- Drag-and-drop feature -->
+    <div class="container mt-5">
+        <div class="card text-center">
+            <div class="card-body">
+                <h1 class="arboria-black text-center">Drag-and-Drop File Upload</h1>
+                <div id="drop-area">
+                    <p>Drag your files here or click the button below to browse.</p>
+                </div>
+                <form id="upload-form" action="/uploads" method="POST" enctype="multipart/form-data">
+                    <input type="file" id="file-input" name="file" class="form-control mb-3" />
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+                <h1>Uploaded Files</h1>
+                <ul id="file-list"></ul>
+            </div>
+        </div>
     </div>
 
-    <!-- Back to Top Button -->
+    <!-- Back-to-top button -->
     <button id="backToTop" class="back-to-top">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 16 12 8 18 16"></polyline>
-        </svg>
+        <i class="bi bi-arrow-up-circle" style="font-size: 40px; color: black;"></i> <!-- Bootstrap Icons Upwards Arrow -->
     </button>
     
-    <!-- Floating Contact Button -->
+    <!-- Floating contact button -->
+    <!-- TOOD: IDK why it's an oval -->
     <div class="floating-contact-button">
-        <i class="fas fa-comment"></i> <!-- Font Awesome SMS Icon -->
+        <i class="bi bi-chat-left"></i>
     </div>
     
-    <!-- Floating Contact Form (not functional - no backend) -->
+    <!-- Floating Contact Form -->
+    <!-- TOOD: Not functioning anymore?, also no backend yet -->
     <div class="floating-contact-form">
         <form action="process.php" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
@@ -75,22 +75,64 @@
         </form>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>
-        <script>
-             document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
-        <p>OU-Tulsa Schusterman Center</p>
-        <p>4502 East 41st Street</p>
-        <p>Tulsa, OK 74135</p>
-        <hr/>
-        <div class="social-links">
-            <a href="https://www.ou.edu/polytechnic" target="_blank" rel="noopener noreferrer">Website</a>
-            <a href="https://example.com" target="_blank" rel="noopener noreferrer">Placeholder</a>
-            <a href="https://example.com" target="_blank" rel="noopener noreferrer">Placeholder</a>
+    <footer class="bg-dark-gray text-light-gray text-left py-3 mt-5">
+        <div class="container">
+            <p style="margin-bottom: 5px;">&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>
+            <p style="margin-bottom: 5px;">OU-Tulsa Schusterman Center</p>
+            <p style="margin-bottom: 5px;">4502 East 41st Street</p>
+            <p style="margin-bottom: 5px;">Tulsa, OK 74135</p>
+        </div>
+        <hr />
+        <div class="social-links text-center">
+            <a href="https://www.ou.edu/polytechnic" class="text-light-gray me-3" target="_blank" rel="noopener noreferrer"><i class="bi bi-globe"></i> Website</a>
+            <a href="https://www.facebook.com/outulsa" class="text-light-gray me-3" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i> Facebook</a>
+            <a href="https://twitter.com/OUTulsa" class="text-light-gray me-3" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter"></i> Twitter</a>
+            <a href="https://www.youtube.com/channel/UCxn_jsQJ83iXiFgORT4EaLA" class="text-light-gray me-3" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube"></i> YouTube</a>
         </div>
     </footer>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- TODO: Move these into a JS file -->
+    <script>
+        // Update the year in the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Fetch files functionality
+        function fetchFiles() {
+            fetch('/files')
+                .then(response => response.json())
+                .then(files => {
+                    let fileList = document.getElementById('file-list');
+                    fileList.innerHTML = ''; // Clear existing list
+                    files.forEach(file => {
+                        let listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <a href="/uploads/${file}" target="_blank">${file}</a>
+                            <button onclick="downloadFile('${file}')">Download ${file}</button>
+                        `;
+                        fileList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching files:', error));
+        }
+
+        function downloadFile(filename) {
+            const link = document.createElement('a');
+            link.href = `/uploads/${filename}`;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Fetch files every 5 seconds
+        setInterval(fetchFiles, 5000);
+        window.onload = fetchFiles;
+    </script>
+
+    <!-- JS scripts from Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom scripts from static/js/main.js -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 </body>
 </html>

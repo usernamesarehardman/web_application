@@ -79,11 +79,17 @@ IV. Provide recommendations for integrating the AI agent into educational enviro
 This research aims to address the challenges educators face in adopting Generative AI for assessment creation by developing an accessible, GenAI-powered quiz generation system. Through efficient integration with LMS and a user-friendly front-end interface, this solution seeks to streamline the assessment design process while maintaining high pedagogical standards. The anticipated outcomes include increased efficiency, broader educational adoption, and improved educational experiences. By democratizing access to advanced AI tools, this project has the potential to contribute meaningfully to the evolution of engineering education and future academic technologies.
 
 ## To-Do List
+- [ ] Clean up CSS folder
+- [ ] Clean up redundant CSS code
+- [ ] Clean up redundant JS code
+- [ ] Split JS code into multiple digestible files
+- [ ] Clean up app.py
+- [ ] Update references to include Bootstrap
+- [ ] Update README
+- [ ] Address commented TODO and FIXME
 
 ### Research
-- [ ] Responsive design
 - [ ] Content security policy
-- [ ] Bootstrap
 - [ ] SQLite
 - [ ] PostgreSQL
 - [ ] APT endpoints

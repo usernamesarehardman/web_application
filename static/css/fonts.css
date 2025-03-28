@@ -1,0 +1,266 @@
+/* Arboria */
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-BlackItalic.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-BoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-Book.otf') format('opentype');
+    font-weight: 400;  /* Normal weight */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-BookItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-LightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-MediumItalic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-Thin.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Arboria';
+    src: url('../fonts/Arboria/Arboria-ThinItalic.otf') format('opentype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+/* Freight Text Pro */
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextRegular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextBlack-Regular.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextBlack-Italic.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextBold-Regular.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextBold-Italic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextBook-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextBook-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextLight-Regular.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextLight-Italic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextMedium-Regular.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextMedium-Italic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextSemibold-Regular.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Freight Text Pro';
+    src: url('../fonts/FreightTextPro/FreightTextSemibold-Italic.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Mongoose */
+@font-face {
+    font-family: 'Mongoose';
+    src: url('../fonts/Mongoose-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Obviously Wide */
+@font-face {
+    font-family: 'Obviously Wide';
+    src: url('../fonts/Obviously-WideSemibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Headers */
+.mongoose-bold {
+    font-family: 'Mongoose', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.arboria-black {
+    font-family: 'Arboria', sans-serif;
+    font-weight: 900;
+}
+
+/* Subheaders */
+.obviously-wide-semibold {
+    font-family: 'Obviously Wide', sans-serif;
+    font-weight: 600;
+}
+
+.freight-text-pro-bold {
+    font-family: 'Freight Text Pro', serif;
+    font-weight: bold;
+}
+
+.arboria-black-subhead {
+    font-family: 'Arboria', sans-serif;
+    font-weight: 900;
+}
+
+/* Body Text */
+/* Arboria */
+.arboria-bold {
+    font-family: 'Arboria', sans-serif;
+    font-weight: bold;
+}
+
+.arboria-bold-italic {
+    font-family: 'Arboria', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.arboria-medium {
+    font-family: 'Arboria', sans-serif;
+    font-weight: 500;
+}
+
+.arboria-medium-italic {
+    font-family: 'Arboria', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.arboria-book {
+    font-family: 'Arboria', sans-serif;
+    font-weight: 400;
+}
+
+.arboria-book-italic {
+    font-family: 'Arboria', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Freight Text Pro */
+.freight-text-pro-black {
+    font-family: 'Freight Text Pro', serif;
+    font-weight: 900;
+}
+
+.freight-text-pro-black-italic {
+    font-family: 'Freight Text Pro', serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.freight-text-pro-semibold {
+    font-family: 'Freight Text Pro', serif;
+    font-weight: 600;
+}
+
+.freight-text-pro-semibold-italic {
+    font-family: 'Freight Text Pro', serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.freight-text-pro-book {
+    font-family: 'Freight Text Pro', serif;
+    font-weight: 400;
+}
+
+.freight-text-pro-book-italic {
+    font-family: 'Freight Text Pro', serif;
+    font-weight: 400;
+    font-style: italic;
+}
