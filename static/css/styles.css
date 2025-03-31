@@ -1,76 +1,15 @@
 @import url("base.css");
+@import url("dropbox.css");
 @import url("fonts.css");
-@import url("navbar.css");
 @import url("footer.css");
 @import url("forms.css");
-@import url("components.css");
-
-/* TODO: This needs to be cleaned up */
-
-/* Logo */
-.logo {
-    width: 300px; 
-    height: 300px;
-    margin-left: 10%;
-    margin-right: auto;
-    display: flex;
-    object-fit: cover;
-}
-
-/* Navbar */
-.navbar {
-    background-color: #841617;
-    padding: 10px 0;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    box-shadow: 0 4px 8px rgba(96, 23, 23, 0.2);
-}
-
-.navbar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.navbar ul li {
-    margin: 0 15px;
-    padding: 0;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #ffffff;
-    padding: 15px 10px;
-    border-radius: 5px;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.navbar ul li a:hover {
-    background-color: #4e0002;
-}
-
-@media (min-width: 1024px) {
-    .navbar ul {
-        justify-content: flex-start;
-        margin-left: 10%;
-    }
-    .logo {
-        justify-content: flex-start;
-        margin-left: 10%;
-    }
-}
+@import url("navbar.css");
+@import url("tables.css");
 
 /* Main */
 main {
     padding: 20px;
-    margin-left: 20% auto;
+    margin: 0 auto;
     flex: 1;
     padding-bottom: 60px;
 }
@@ -92,200 +31,35 @@ main {
     border-color: #000;
 }
 
+/* Button */
 button {
     display: block;
     margin: 20px auto;
-}
-
-/* Forms */
-form {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    width: 600px;
-    max-width: 100%;
-    margin: 0 auto;
-    margin-left: auto;
-    margin-right: auto
-}
-
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-    font-size: 1.1em;
-    color: #f0f0f0;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea,
-select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0 20px 0;
-    border: 1px solid #323232;
-    border-radius: 4px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-textarea:focus,
-select:focus {
-    border-color: #841617;
-    outline: none;
-}
-
-input[type="submit"] {
     background-color: #841617;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
-    width: 100%;
-    border-radius: 4px;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
+button:hover {
     background-color: #4e0002;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-    margin-right: 10px;
+/* Horizontal line */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #f0f0f0;
+    margin: 1em auto;
+    padding: 0;
 }
 
-/* Floating Contact Form */
-.floating-contact-form {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    display: none; /* Initially hidden */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    z-index: 9998;
-    transition: all 0.3s ease;
-}
-
-.floating-contact-form input,
-.floating-contact-form textarea,
-.floating-contact-form button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    color: #841617;
-}
-
-.floating-contact-form input,
-.floating-contact-form textarea {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.floating-contact-form button {
-    background-color: #841617;
-    color: #ffffff;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.floating-contact-form button:hover {
-    background-color: #841617;
-}
-
-.floating-contact-form textarea {
-    height: 120px;
-    resize: none;
-}
-
-/* Floating Contact Button (SMS Icon) */
-.floating-contact-button {
-    position: fixed;
-    bottom: 15px;
-    right: 40px;
-    background-color: #841617;
-    border-radius: 50%;
-    padding: 20px;
-    color: #ffffff;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 9999;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-.floating-contact-button:hover {
-    background-color: #9d2628;
-    border-radius: 75%;
-    transform: scale(1.1);
-}
-
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 90px;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: #ffffff;
-    border: 2px solid black;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: opacity 0.3s, transform 0.3s;
-    opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Prevent interaction when hidden */
-}
-
-.back-to-top:hover {
-    transform: scale(1.1);
-    background-color: #0056b3;
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Footer */
-.footer-push {
-    flex: 1; /* Pushes the footer to the bottom */
-}
-
-footer {
-    background-color: var(--dark-gray);
-    color: var(--light-gray);
-    text-align: left;
-    padding: 1rem 0;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-    font-size: 0.75em;
-}
-
-footer .footer-container {
-    max-width: auto;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
+/* Social links */
 .social-links a {
     color: #f0f0f0;
     margin: 0 10px;
@@ -297,24 +71,24 @@ footer .footer-container {
     color: #ffffff;
 }
 
-/* Icons are currently not used */
-footer .social-icons a {
-    margin: 0 15px;
-    font-size: 25px;
-    color: #f0f0f0;
-    transition: color 0.3s ease;
-}
-
-footer .social-icons a:hover {
-    color: #ffffff;
-}
-
 /* Responsive Design */
+@media (min-width: 1024px) {
+    .navbar ul {
+        justify-content: flex-start;
+        margin-left: 10%;
+    }
+    .logo {
+        justify-content: flex-start;
+        margin-left: 10%;
+    }
+}
+
 @media (max-width: 768px) {
+
     h1 {
         font-size: 2em;
     }
-    
+
     form {
         padding: 20px;
         width: 90%;
@@ -324,22 +98,11 @@ footer .social-icons a:hover {
         font-size: 1em;
     }
 
-    /* Ensure footer does not overlap content on smaller screens */
     footer {
         position: relative;
     }
 
-    /* Add padding to the main content area on smaller screens */
     main {
-        padding-bottom: 80px; /* Adjust based on footer height */
+        padding-bottom: var(--footer-height, 80px);
     }
-}
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #f0f0f0;
-    margin: 1em auto;
-    padding: 0;
 }

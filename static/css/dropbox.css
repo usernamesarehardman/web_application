@@ -1,0 +1,24 @@
+/* Drop box */
+#drop-area {
+    width: 600px;
+    height: 150px;
+    border: 2px dashed #f0f0f0;
+    text-align: center;
+    line-height: 150px;
+    margin: 50px auto;
+    cursor: pointer;
+}
+
+#drop-area.dragging {
+    border-color: #000;
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+#fileInput {
+    display: none;
+}
+
+#status {
+    text-align: center;
+    margin-top: 10px;
+}

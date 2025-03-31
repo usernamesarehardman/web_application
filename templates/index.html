@@ -5,7 +5,7 @@
     <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OUPI Web Application Testing Environment</title>
+    <title>Drag-and-Drop File Upload</title>
 
     <!-- Styles and icons from Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -22,11 +22,13 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-ok-crimson">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <!-- TODO: Make this left-justified -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="/" target="_blank" rel="noopener noreferrer">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about" target="_blank" rel="noopener noreferrer">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
@@ -35,46 +37,52 @@
         </div>
     </nav>
 
-    <!-- Drag-and-drop feature -->
+    <!-- Main page content -->
     <div class="container mt-5">
         <div class="card text-center">
             <div class="card-body">
+
+                <!-- Drag-and-Drop feature -->
                 <h1 class="arboria-black text-center">Drag-and-Drop File Upload</h1>
                 <div id="drop-area">
                     <p>Drag your files here or click the button below to browse.</p>
                 </div>
+
+                <!-- Upload form -->
                 <form id="upload-form" action="/uploads" method="POST" enctype="multipart/form-data">
                     <input type="file" id="file-input" name="file" class="form-control mb-3" />
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="button">Upload</button>
                 </form>
-                <h1>Uploaded Files</h1>
-                <ul id="file-list"></ul>
+
+                <!-- Uploaded files -->
+                <div class="table-container mt-5">
+                    <h2 class="arboria-black text-center">Uploaded Files</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Filename</th>
+                                <th>Size</th>
+                                <th>Download</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="file-list">
+                            <tr>
+                                <td colspan="4" class="text-center">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Back-to-top button -->
-    <button id="backToTop" class="back-to-top">
-        <i class="bi bi-arrow-up-circle" style="font-size: 40px; color: black;"></i> <!-- Bootstrap Icons Upwards Arrow -->
+    <button id="back-to-top" class="btn rounded-circle" style="background-color: #841617; color: white; display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 50px; height: 50px; font-size: 24px; line-height: 1;">
+        <i class="bi bi-chevron-up"></i>
     </button>
-    
-    <!-- Floating contact button -->
-    <!-- TOOD: IDK why it's an oval -->
-    <div class="floating-contact-button">
-        <i class="bi bi-chat-left"></i>
-    </div>
-    
-    <!-- Floating Contact Form -->
-    <!-- TOOD: Not functioning anymore?, also no backend yet -->
-    <div class="floating-contact-form">
-        <form action="process.php" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
 
+    <!-- Footer -->
     <footer class="bg-dark-gray text-light-gray text-left py-3 mt-5">
         <div class="container">
             <p style="margin-bottom: 5px;">&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>
@@ -90,44 +98,6 @@
             <a href="https://www.youtube.com/channel/UCxn_jsQJ83iXiFgORT4EaLA" class="text-light-gray me-3" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube"></i> YouTube</a>
         </div>
     </footer>
-
-    <!-- TODO: Move these into a JS file -->
-    <script>
-        // Update the year in the footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Fetch files functionality
-        function fetchFiles() {
-            fetch('/files')
-                .then(response => response.json())
-                .then(files => {
-                    let fileList = document.getElementById('file-list');
-                    fileList.innerHTML = ''; // Clear existing list
-                    files.forEach(file => {
-                        let listItem = document.createElement('li');
-                        listItem.innerHTML = `
-                            <a href="/uploads/${file}" target="_blank">${file}</a>
-                            <button onclick="downloadFile('${file}')">Download ${file}</button>
-                        `;
-                        fileList.appendChild(listItem);
-                    });
-                })
-                .catch(error => console.error('Error fetching files:', error));
-        }
-
-        function downloadFile(filename) {
-            const link = document.createElement('a');
-            link.href = `/uploads/${filename}`;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        // Fetch files every 5 seconds
-        setInterval(fetchFiles, 5000);
-        window.onload = fetchFiles;
-    </script>
 
     <!-- JS scripts from Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

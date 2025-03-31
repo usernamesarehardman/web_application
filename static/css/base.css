@@ -50,16 +50,7 @@ h1, h2, h3 {
     text-shadow: -1px -1px 0 var(--text-color), 1px 1px 0 var(--text-color);
 }
 
-.subhead-serif {
-    font-family: var(--font-family-body);
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
 /* Emphasis */
 em {
-    font-family: var(--font-family-body);
-    font-weight: 900;
     font-style: italic;
 }

@@ -1,130 +1,135 @@
-const dropArea = document.getElementById('drop-area');
-const fileInput = document.getElementById('file-input');
-const browseBtn = document.getElementById('browse-btn');
-const uploadBtn = document.getElementById('upload-btn');
-const fileNameDisplay = document.getElementById('file-name-display');
-const form = document.getElementById('upload-form');
+// Drag and drop file upload functionality
+document.addEventListener("DOMContentLoaded", () => {
+    const dropArea = document.getElementById("drop-area");
+    const uploadForm = document.getElementById("upload-form");
+    const fileInput  = document.getElementById("file-input");
 
-// Prevent default drag behaviors
-dropArea.addEventListener('dragover', (event) => {
-    event.preventDefault();
-    dropArea.classList.add('dragging');
-});
+    if (!dropArea || !uploadForm || !fileInput) return;
 
-dropArea.addEventListener('dragleave', () => {
-    dropArea.classList.remove('dragging');
-});
+    ["dragenter", "dragover", "dragleave", "drop"].forEach(evtName => {
+        dropArea.addEventListener(evtName, e => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    });
 
-dropArea.addEventListener('drop', (event) => {
-    event.preventDefault();
-    dropArea.classList.remove('dragging');
-    const files = event.dataTransfer.files;
-    if (files.length > 0) {
-        fileInput.files = files;
-        updateFileNameDisplay(files[0]);
-    }
-});
+    ["dragenter", "dragover"].forEach(evtName => {
+        dropArea.addEventListener(evtName, () => {
+            dropArea.classList.add("dragging");
+        });
+    });
 
-// Open file dialog when clicking the Browse button
-browseBtn.addEventListener('click', () => {
-    fileInput.click();
-});
+    ["dragleave", "drop"].forEach(evtName => {
+        dropArea.addEventListener(evtName, () => {
+            dropArea.classList.remove("dragging");
+        });
+    });
 
-// Set file input value when files are selected manually
-fileInput.addEventListener('change', () => {
-    if (fileInput.files.length > 0) {
-        updateFileNameDisplay(fileInput.files[0]);
-    }
-});
-
-// Update the file name display and enable the upload button
-function updateFileNameDisplay(file) {
-    fileNameDisplay.textContent = `Selected file: ${file.name}`;
-    uploadBtn.disabled = false;
-}
-
-// Optional: Add a submit handler if needed to show an upload confirmation
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    fetch('/uploads', {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.text())
-    .then(message => alert(message))
-    .catch(error => console.error('Error:', error));
-});
-
-// Smooth Scrolling for navbar links
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const linkUrl = new URL(this.href, window.location.href); // Get absolute URL
-        const currentPageUrl = new URL(window.location.href); // Get current page URL
-
-        if (linkUrl.origin === currentPageUrl.origin && linkUrl.pathname === currentPageUrl.pathname && linkUrl.hash) {
-            e.preventDefault(); // Stop default link behavior
-
-            const section = document.querySelector(linkUrl.hash); // Select section
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll
-            } else {
-                console.warn('Section not found for hash:', linkUrl.hash);
-            }
-        } else {
-            // Allow default behavior for different page links
-            console.log(`Navigating to different page: ${linkUrl.href}`);
+    // Instead of auto-upload, just set the dropped files in the file input
+    dropArea.addEventListener("drop", e => {
+        const droppedFiles = e.dataTransfer.files;
+        if (!droppedFiles.length) return;
+        
+        // Create a new DataTransfer to populate file input
+        const dt = new DataTransfer();
+        for (let file of droppedFiles) {
+            dt.items.add(file);
         }
+        // Now the fileInput contains the dropped files
+        fileInput.files = dt.files;
     });
 });
 
-// Back to Top Button Functionality
-const backToTopButton = document.getElementById('backToTop');
+// Show or hide the back-to-top button based on scroll position
+const backToTopButton = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopButton.classList.add('visible');
+    if (window.scrollY > 200) {
+        backToTopButton.style.display = 'block';
     } else {
-        backToTopButton.classList.remove('visible');
+        backToTopButton.style.display = 'none';
     }
 });
 
+// Scroll to the top when the button is clicked
 backToTopButton.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Toggle visibility of the floating contact form
-document.querySelector('.floating-contact-button').addEventListener('click', function() {
-    var form = document.querySelector('.floating-contact-form');
+// Update the year in the footer
+document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Toggle form visibility
-    if (form.style.display === 'none' || form.style.display === '') {
-        form.style.display = 'block';  // Show the form
-    } else {
-        form.style.display = 'none';  // Hide the form
-    }
-});
+// Fetch and display the list of files
+document.addEventListener("DOMContentLoaded", function() {
+    fetch("/list_files")
+        .then(response => response.json())
+        .then(files => {
+            let tableBody = document.getElementById("file-list");
+            tableBody.innerHTML = ""; // Clear loading text
 
-// Nav bar hide on scroll down, show on scroll up
-let lastScrollPosition = 0;
-const header = document.querySelector('header');
-let ticking = false;
-
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            const currentScrollPosition = window.scrollY;
-
-            if (currentScrollPosition > lastScrollPosition) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
+            if (files.length === 0) {
+                tableBody.innerHTML = "<tr><td colspan='4' class='text-center'>No files found</td></tr>";
+                return;
             }
 
-            lastScrollPosition = currentScrollPosition;
-            ticking = false;
-        });
+            files.forEach(file => {
+                let row = `<tr>
+                    <td>${file.name}</td>
+                    <td>${(file.size / 1024).toFixed(2)} KB</td>
+                    <td><a href="${file.url}" class="download-btn" download>Download</a></td>
+                    <td><button class="button delete-btn" data-filename="${file.name}">Delete</button></td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
 
-        ticking = true;
+            // Add event listeners to delete buttons
+            document.querySelectorAll(".delete-btn").forEach(button => {
+                button.addEventListener("click", function() {
+                    const filename = this.getAttribute("data-filename");
+                    deleteFile(filename);
+                });
+            });
+        })
+        .catch(error => console.error("Error fetching files:", error));
+});
+
+// Function to upload a file
+document.addEventListener("DOMContentLoaded", function() {
+    const uploadForm = document.getElementById("upload-form");
+    if (uploadForm) {
+        uploadForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(uploadForm);
+
+            fetch("/uploads", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("File uploaded successfully.");
+                    // Refresh or re-fetch the list of files
+                    document.dispatchEvent(new Event("DOMContentLoaded"));
+                } else {
+                    alert("Failed to upload file.");
+                }
+            })
+            .catch(error => console.error("Error uploading file:", error));
+        });
     }
 });
+
+// Function to delete a file
+function deleteFile(filename) {
+    fetch(`/delete_file?filename=${encodeURIComponent(filename)}`, { method: "DELETE" })
+        .then(response => {
+            if (response.ok) {
+                alert("File deleted successfully.");
+                // Refresh the file list
+                document.dispatchEvent(new Event("DOMContentLoaded"));
+            } else {
+                alert("Failed to delete the file.");
+            }
+        })
+        .catch(error => console.error("Error deleting file:", error));
+}

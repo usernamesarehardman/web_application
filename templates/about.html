@@ -22,13 +22,13 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-ok-crimson">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="/" target="_blank" rel="noopener noreferrer">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about" target="_blank" rel="noopener noreferrer">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
@@ -37,35 +37,147 @@
         </div>
     </nav>
 
-    <!-- Placeholder about page content -->
+    <!-- Research proposal -->
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <h2>About the Project</h2>
-                <p>Welcome to the drag-and-drop file upload test environment.
-                    This page is designed to help you test the functionality of uploading files through a simple and user-friendly interface.
-                    Here, you can easily drag files from your local system and drop them into the designated area to initiate the upload process. 
-                    The goal of this test is to ensure smooth file handling, error-free uploads, and a seamless user experience across various devices and browsers. 
-                    Please follow the on-screen instructions to upload files. 
-                    Make sure to only upload supported file types and check the status messages for any errors or successes during the upload process.
-                </p>
-            </div>
-            <div class="col-md-6">
-                <h2>Features</h2>
-                <ul>
-                    <li>Drag-and-drop file upload</li>
-                    <li>Responsive design</li>
-                    <li>Bootstrap integration</li>
-                    <li>Other stuff</li>
-                    <li>Other stuff</li>
-                    <li>Other stuff</li>
-                    <li>Other stuff</li>
-                    <li>Other stuff</li>
-                </ul>
-            </div>
-        </div>
+        <h1 class="text-center mb-4">Democratizing Generative AI Quiz Creation</h1>
+        <h2 class="text-center text-muted">Accelerating Assessment Development in Engineering Education</h2>
+    
+        <hr>
+    
+        <section>
+            <h3>Abstract</h3>
+            <p>
+                Generative Artificial Intelligence (GenAI) is experiencing rapid growth across numerous industries, 
+                with its adoption expected to expand even further. Despite its potential, educational institutions, 
+                particularly those with limited funding, struggle to integrate GenAI into their workflows due to technical 
+                challenges and resource constraints. This research addresses these barriers by developing an autonomous 
+                GenAI-powered quiz generation system designed to streamline the creation of assessments. The system will 
+                automatically integrate course materials into Learning Management Systems (LMS), enhancing accessibility 
+                for educators while preserving the pedagogical quality of assessments. This project aims to bridge the 
+                gap between technological innovation and educational application, empowering instructors with efficient 
+                tools to improve learning outcomes.
+            </p>
+        </section>
+
+        <hr>
+    
+        <section>
+            <h3>Background and Significance</h3>
+            <p>
+                Severe teacher shortages are a critical challenge facing education systems worldwide. For example, 
+                33 countries currently lack enough teachers to ensure universal primary education by 2030. 
+                To meet this goal, the world would need to recruit up to 25.8 million 
+                schoolteachers (UNESCO Institute for Statistics, 2015). To address these issues, 
+                the education sector should begin leveraging technology to enhance teaching efficiency 
+                and reduce workload burdens, administrative tasks, and teacher burnout. Recent research 
+                suggests that AI integration in education (AIED) could enable teachers to reallocate between 
+                20% and 40% of their time (McKinsey & Company, 2020). Traditional quiz creation is often a time-consuming 
+                and labor-intensive process that relies on manual input and fixed question formats, whereas an AI-driven 
+                approach can dynamically generate assessments tailored to course content. This not only saves time but 
+                also allows for more adaptive and personalized testing methods. According to a systemic analysis by 
+                Zawacki-Richter, O., Marín, V. I., Bond, M., and Gouverneur, F. (2019), which examined over 20 years of 
+                research on AIED, the authors assert that “Overall, the studies show that AI applications can perform 
+                assessment and evaluation tasks with remarkable accuracy and efficiency” (p. 17). Despite this potential, 
+                many existing AI tools remain inaccessible due to their complexity and the need for advanced programming 
+                knowledge. Luckin, R., Holmes, W., Griffiths, M., and Forcier, L. B. (2016) describe AIED as, “something 
+                of a cottage industry” continuing that, “development of a single monolithic AIEd system that tackles every 
+                subject, and every possible learning scenario [is not feasible]. Instead, success will lie in the 
+                development of a multitude of individual AIEd components that specialise in a particular expertise” (p. 51). 
+                Further research supports this idea, with Roll, I., and Wylie, R. (2016) arguing that AIED should leverage 
+                existing resources, such as Innovative Learning Environments (ILEs), which use technology to shape teaching 
+                approaches. They contend that there is no need to reinvent the wheel, noting that ILE developers currently 
+                create their own content, a process that is both labor-intensive and inefficient. They suggest, “Instead, 
+                we suggest to build ILE that operates as a shell or an envelope for existing learning objects” (p. 594) 
+                This project aligns with this perspective, proposing the development of an AI agent with an intuitive                     interface to simplify advanced data analysis. By utilizing existing resources and reducing technical 
+                barriers, this AI-driven solution aims to democratize data analysis, enabling educators from diverse 
+                disciplines to harness its capabilities for enhanced teaching and research outcomes.
+            </p>
+        </section>
+
+        <hr
+
+        <section>
+            <h3>Hypothesis</h3>
+            <ol type="I">
+                <li>Implementing a GenAI-powered quiz generation system will reduce the time educators spend on lesson planning.</li>
+                <li>Machine learning models optimized for educational purposes will generate assessment materials of comparable or superior quality to those produced through traditional methods.</li>
+                <li>A well-designed and user-friendly front-end interface will enhance accessibility for educators, lowering technical barriers and promoting broader adoption of GenAI tools in assessment creation.</li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section>
+            <h3>Research Objectives</h3>
+            <ol type="I">
+                <li>Build a front-end web interface with an accessible interface and back-end system utilizing a relational database for the AI agent to interact with user-uploaded files.</li>
+                <li>Design a back-end system that employs simplified language and visual aids to help users understand data processes without needing deep technical expertise.</li>
+                <li>Develop a semi-autonomous AI agent to analyze materials and generate educational content for educators to utilize.</li>
+                <li>Evaluate the agent’s performance for accuracy, quality, speed, and ability to interface with LMS systems.</li>
+                <li>Provide recommendations for integrating the AI agent into educational environments.</li>
+            </ol>
+        </section>
+    
+        <hr>
+    
+        <section>
+            <h3>Conclusion</h3>
+            <p>
+                This research aims to address the challenges educators face in adopting Generative AI for assessment creation 
+                by developing an accessible, GenAI-powered quiz generation system. Through efficient integration with LMS and 
+                a user-friendly front-end interface, this solution seeks to streamline the assessment design process while 
+                maintaining high pedagogical standards. The anticipated outcomes include increased efficiency, broader 
+                educational adoption, and improved educational experiences. By democratizing access to advanced AI tools, 
+                this project has the potential to contribute meaningfully to the evolution of engineering education and 
+                future academic technologies.
+            </p>
+        </section>
+    
+        <hr>
+    
+        <section>
+            <h3>References</h3>
+            <ol>
+                <li>ChatGPT. (2025). <em>Content partially generated using OpenAI's ChatGPT-4o</em>. Retrieved from OpenAI API.</li>
+        
+                <li>Bryant, J., Heitz, C., Sanghvi, S., & Wagle, D. (2020, January 14). How artificial intelligence will impact K-12 teachers. <em>McKinsey & Company</em>. 
+                    <a href="https://www.mckinsey.com/industries/education/our-insights/how-artificial-intelligence-will-impact-k-12-teachers" target="_blank">
+                        https://www.mckinsey.com/industries/education/our-insights/how-artificial-intelligence-will-impact-k-12-teachers
+                    </a>.
+                </li>
+        
+                <li>
+                    Luckin, R., Holmes, W., Griffiths, M., & Forcier, L. B. (2016). Intelligence unleashed: An argument for AI in education. <em>Pearson Education</em>. 
+                    <a href="https://www.pearson.com/corporate/about-pearson/what-we-do/innovation/smarter-digital-tools/intelligence-unleashed.html" target="_blank">
+                        https://www.pearson.com/corporate/about-pearson/what-we-do/innovation/smarter-digital-tools/intelligence-unleashed.html
+                    </a>.
+                </li>
+        
+                <li>
+                    Roll, I., & Wylie, R. (2016). Evolution and revolution in artificial intelligence in education. <em>International Journal of Artificial Intelligence in Education</em>, 26(2), 582-599. 
+                    <a href="https://doi.org/10.1007/s40593-016-0110-3" target="_blank">
+                        https://doi.org/10.1007/s40593-016-0110-3
+                    </a>.
+                </li>
+        
+                <li>
+                    UNESCO. (2015). Sustainable development goal for education cannot advance without more teachers (UIS Fact Sheet No. 33). <em>UNESCO Institute for Statistics</em>. 
+                    <a href="http://www.uis.unesco.org/Education/Documents/fs33-2015teachers.pdf" target="_blank">
+                        http://www.uis.unesco.org/Education/Documents/fs33-2015teachers.pdf
+                    </a>.
+                </li>
+        
+                <li>
+                    Zawacki-Richter, O., Marín, V. I., Bond, M., & Gouverneur, F. (2019). Systematic review of research on artificial intelligence applications in higher education. <em>International Journal of Educational Technology in Higher Education</em>, 16(1), 39. 
+                    <a href="https://doi.org/10.1186/s41239-019-0171-0" target="_blank">
+                        https://doi.org/10.1186/s41239-019-0171-0
+                    </a>.
+                </li>
+            </ol>
+        </section>        
     </div>
 
+    <!-- Footer -->
     <footer class="bg-dark-gray text-light-gray text-left py-3 mt-5">
         <div class="container">
             <p style="margin-bottom: 5px;">&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>

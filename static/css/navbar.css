@@ -1,0 +1,31 @@
+/* Navbar */
+.navbar {
+    background-color: #841617;
+    padding: 10px 0;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(96, 23, 23, 0.2);
+}
+
+/* Navbar ul li */ 
+.navbar ul li {
+    margin: 0 15px;
+    padding: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #4e0002;
+    color: #ffffff;
+}
