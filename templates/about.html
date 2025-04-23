@@ -18,7 +18,7 @@
 
     <!-- Logo -->
     <div class="container text-center my-4">
-        <img src="/static/images/oupi_logo_w-ClearS.png" class="img-fluid" alt="OUPI Logo">
+        <img src="{{ url_for('static', filename='images/oupi_logo_w-ClearS.png') }}" class="img-fluid" alt="Logo of the University of Oklahoma Polytechnic Institute">
     </div>
 
     <!-- Navigation Bar -->
@@ -94,7 +94,7 @@
             </p>
         </section>
 
-        <hr
+        <hr />
 
         <section>
             <h3>Hypothesis</h3>
@@ -138,38 +138,38 @@
         <section>
             <h3>References</h3>
             <ol>
-                <li>ChatGPT. (2025). <em>Content partially generated using OpenAI's ChatGPT-4o</em>. Retrieved from OpenAI API.</li>
+                <li>ChatGPT. (2025). <em>Content Partially Generated Using OpenAI's ChatGPT-4o</em>. Retrieved from <a href="https://openai.com/api/" target="_blank" rel="noopener noreferrer">OpenAI API</a>.</li>
         
-                <li>Bryant, J., Heitz, C., Sanghvi, S., & Wagle, D. (2020, January 14). How artificial intelligence will impact K-12 teachers. <em>McKinsey & Company</em>. 
-                    <a href="https://www.mckinsey.com/industries/education/our-insights/how-artificial-intelligence-will-impact-k-12-teachers" target="_blank">
+                <li>Bryant, J., Heitz, C., Sanghvi, S., & Wagle, D. (2020, January 14). <em>How Artificial Intelligence Will Impact K-12 Teachers</em>. McKinsey & Company. 
+                    <a href="https://www.mckinsey.com/industries/education/our-insights/how-artificial-intelligence-will-impact-k-12-teachers" target="_blank" rel="noopener noreferrer">
                         https://www.mckinsey.com/industries/education/our-insights/how-artificial-intelligence-will-impact-k-12-teachers
                     </a>.
                 </li>
         
                 <li>
-                    Luckin, R., Holmes, W., Griffiths, M., & Forcier, L. B. (2016). Intelligence unleashed: An argument for AI in education. <em>Pearson Education</em>. 
-                    <a href="https://www.pearson.com/corporate/about-pearson/what-we-do/innovation/smarter-digital-tools/intelligence-unleashed.html" target="_blank">
+                    Luckin, R., Holmes, W., Griffiths, M., & Forcier, L. B. (2016). <em>Intelligence Unleashed: An Argument for AI in Education</em>. Pearson Education. 
+                    <a href="https://www.pearson.com/corporate/about-pearson/what-we-do/innovation/smarter-digital-tools/intelligence-unleashed.html" target="_blank" rel="noopener noreferrer">
                         https://www.pearson.com/corporate/about-pearson/what-we-do/innovation/smarter-digital-tools/intelligence-unleashed.html
                     </a>.
                 </li>
         
                 <li>
-                    Roll, I., & Wylie, R. (2016). Evolution and revolution in artificial intelligence in education. <em>International Journal of Artificial Intelligence in Education</em>, 26(2), 582-599. 
-                    <a href="https://doi.org/10.1007/s40593-016-0110-3" target="_blank">
+                    Roll, I., & Wylie, R. (2016). <em>Evolution and Revolution in Artificial Intelligence in Education</em>. International Journal of Artificial Intelligence in Education, 26(2), 582-599. 
+                    <a href="https://doi.org/10.1007/s40593-016-0110-3" target="_blank" rel="noopener noreferrer">
                         https://doi.org/10.1007/s40593-016-0110-3
                     </a>.
                 </li>
         
                 <li>
-                    UNESCO. (2015). Sustainable development goal for education cannot advance without more teachers (UIS Fact Sheet No. 33). <em>UNESCO Institute for Statistics</em>. 
-                    <a href="http://www.uis.unesco.org/Education/Documents/fs33-2015teachers.pdf" target="_blank">
+                    UNESCO. (2015). <em>Sustainable Development Goal for Education Cannot Advance Without More Teachers (UIS Fact Sheet No. 33)</em>. UNESCO Institute for Statistics. 
+                    <a href="http://www.uis.unesco.org/Education/Documents/fs33-2015teachers.pdf" target="_blank" rel="noopener noreferrer">
                         http://www.uis.unesco.org/Education/Documents/fs33-2015teachers.pdf
                     </a>.
                 </li>
         
                 <li>
-                    Zawacki-Richter, O., Marín, V. I., Bond, M., & Gouverneur, F. (2019). Systematic review of research on artificial intelligence applications in higher education. <em>International Journal of Educational Technology in Higher Education</em>, 16(1), 39. 
-                    <a href="https://doi.org/10.1186/s41239-019-0171-0" target="_blank">
+                    Zawacki-Richter, O., Marín, V. I., Bond, M., & Gouverneur, F. (2019). <em>Systematic Review of Research on Artificial Intelligence Applications in Higher Education</em>. International Journal of Educational Technology in Higher Education, 16(1), 39. 
+                    <a href="https://doi.org/10.1186/s41239-019-0171-0" target="_blank" rel="noopener noreferrer">
                         https://doi.org/10.1186/s41239-019-0171-0
                     </a>.
                 </li>
@@ -180,10 +180,10 @@
     <!-- Footer -->
     <footer class="bg-dark-gray text-light-gray text-left py-3 mt-5">
         <div class="container">
-            <p style="margin-bottom: 5px;">&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>
-            <p style="margin-bottom: 5px;">OU-Tulsa Schusterman Center</p>
-            <p style="margin-bottom: 5px;">4502 East 41st Street</p>
-            <p style="margin-bottom: 5px;">Tulsa, OK 74135</p>
+            <p class="footer-text">&copy; <span id="year"></span> University of Oklahoma Polytechnic Institute. All rights reserved.</p>
+            <p class="footer-text">OU-Tulsa Schusterman Center</p>
+            <p class="footer-text">4502 East 41st Street</p>
+            <p class="footer-text">Tulsa, OK 74135</p>
         </div>
         <hr />
         <div class="social-links text-center">
@@ -200,7 +200,7 @@
     </script>
 
     <!-- JS scripts from Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6W3DUbbNQmyq8cWR3r69jSM1C1jmgGkz4pDvoTMeC2mD9BabQPl" crossorigin="anonymous"></script>
     <!-- Custom scripts from static/js/main.js -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 

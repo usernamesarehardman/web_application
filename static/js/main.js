@@ -4,7 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const uploadForm = document.getElementById("upload-form");
     const fileInput  = document.getElementById("file-input");
 
-    if (!dropArea || !uploadForm || !fileInput) return;
+    if (!dropArea || !uploadForm || !fileInput) {
+        console.error("Missing required elements:", {
+            dropArea: !!dropArea,
+            uploadForm: !!uploadForm,
+            fileInput: !!fileInput
+        });
+        return;
+    }
 
     ["dragenter", "dragover", "dragleave", "drop"].forEach(evtName => {
         dropArea.addEventListener(evtName, e => {
@@ -105,16 +112,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 method: "POST",
                 body: formData
             })
-            .then(response => {
-                if (response.ok) {
-                    alert("File uploaded successfully.");
-                    // Refresh or re-fetch the list of files
-                    document.dispatchEvent(new Event("DOMContentLoaded"));
-                } else {
-                    alert("Failed to upload file.");
-                }
+            .then(response => response.json())
+            .then(data => {
+                alert(`${data.message}\n\nPreview of Chunk 1:\n${data.sample_chunk}`);
+                document.dispatchEvent(new Event("DOMContentLoaded"));
             })
-            .catch(error => console.error("Error uploading file:", error));
+            .catch(error => {
+                console.error("Error uploading file:", error);
+                alert("Failed to upload file.");
+            });
         });
     }
 });

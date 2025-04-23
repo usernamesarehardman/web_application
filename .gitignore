@@ -12,7 +12,7 @@
 *.svg
 
 # Ignore bootstrap examples
-/bootstrap-5.3.3-examples/
+bootstrap-5.3.3-examples/
 
 # Ignore dev directory
 dev/
@@ -26,7 +26,6 @@ __pycache__/
 # Ignore environment and dependency files
 venv/
 .env
-.DS_Store
 
 # Ignore logs and temporary files
 *.log
@@ -34,12 +33,14 @@ venv/
 
 # Ignore IDE and editor settings
 .vscode/
-.idea/
+# Ignore all files in .vscode/ except settings.json for shared workspace settings
+.vscode/*
+!.vscode/settings.json
 *.swp
 
 # Ignore build and output directories
 /build/
-dist/
+/dist/
 *.out
 
 # Ignore OS-specific files
@@ -66,7 +67,6 @@ pytest.xml
 Pipfile
 Pipfile.lock
 poetry.lock
-
 # Ignore Node.js dependencies
 node_modules/
 
