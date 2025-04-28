@@ -50,8 +50,16 @@
 
                 <!-- Upload form -->
                 <form id="upload-form" action="/uploads" method="POST" enctype="multipart/form-data">
-                    <input type="file" id="file-input" name="file" class="form-control mb-3" />
-                    <button type="submit" class="button">Upload</button>
+                    <div id="file-inputs-container" class="mb-3">
+                        <!-- The first file input -->
+                        <input 
+                            type="file"
+                            class="form-control mb-3"
+                            name="files"
+                            id="file-input"
+                        />
+                    </div>
+                    <button type="submit" id="uploadFormButton" class="button">Upload</button>
                 </form>
 
                 <!-- Uploaded files -->
@@ -108,6 +116,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6W3DUbbNQmyq8cWR3r69jSM1C1jmgGkz4pDvoTMeC2mD9BabQPl" crossorigin="anonymous"></script>
     <!-- Custom scripts from static/js/main.js -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
 </body>
 </html>

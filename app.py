@@ -67,33 +67,45 @@ def template():
 @app.route('/uploads', methods=['POST'])
 def upload_file():
     """Handle file uploads and process the content."""
-    if 'file' not in request.files:
-        return 'No file part', 400
+    if 'files' not in request.files:
+        return 'No files part', 400
 
-    file = request.files['file']
-    if file.filename == '':
-        return 'No selected file', 400
+    files = request.files.getlist('files')  # Get the list of uploaded files
+    if not files or all(file.filename == '' for file in files):
+        return 'No selected files', 400
 
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-    upload_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-    file.save(upload_path)
+    responses = []
 
-    # Extract and chunk text
-    extracted_text = ""
-    if file.filename.lower().endswith(".pdf"):
-        extracted_text = extract_text_from_pdf(upload_path)
-    elif file.filename.lower().endswith(".docx"):
-        extracted_text = extract_text_from_docx(upload_path)
-    else:
-        return "Unsupported file type", 400
+    for file in files:
+        if file.filename == '':
+            continue
 
-    chunks = chunk_text(extracted_text)
+        upload_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        file.save(upload_path)
 
-    return jsonify({
-        "message": "File uploaded and processed successfully!",
-        "num_chunks": len(chunks),
-        "sample_chunk": chunks[0] if chunks else ""
-    })
+        # Extract and chunk text
+        extracted_text = ""
+        if file.filename.lower().endswith(".pdf"):
+            extracted_text = extract_text_from_pdf(upload_path)
+        elif file.filename.lower().endswith(".docx"):
+            extracted_text = extract_text_from_docx(upload_path)
+        else:
+            responses.append({
+                "filename": file.filename,
+                "status": "Unsupported file type"
+            })
+            continue
+
+        chunks = chunk_text(extracted_text)
+        responses.append({
+            "filename": file.filename,
+            "status": "Processed successfully",
+            "num_chunks": len(chunks),
+            "sample_chunk": chunks[0] if chunks else ""
+        })
+
+    return jsonify(responses)
 
 
 @app.route("/delete_file", methods=["DELETE"])
