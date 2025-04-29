@@ -1,4 +1,4 @@
-// drag-and-drop.js
+// drag_and_drop.js
 
 document.addEventListener("DOMContentLoaded", () => {
     const dropArea = document.getElementById("drop-area");
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Prevent default behavior for drag and drop
+    // Prevent default behavior for drag-and-drop events
     ["dragenter", "dragover", "dragleave", "drop"].forEach(eventType => {
         dropArea.addEventListener(eventType, event => {
             event.preventDefault();
@@ -17,29 +17,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Visual feedback for when dragging over the drop area
-    dropArea.addEventListener("dragenter", () => {
-        dropArea.classList.add("dragging");
+    ["dragenter", "dragover"].forEach(eventType => {
+        dropArea.addEventListener(eventType, () => {
+            dropArea.classList.add("dragging");
+        });
     });
 
-    dropArea.addEventListener("dragover", () => {
-        dropArea.classList.add("dragging");
+    ["dragleave", "drop"].forEach(eventType => {
+        dropArea.addEventListener(eventType, () => {
+            dropArea.classList.remove("dragging");
+        });
     });
 
-    // Remove visual feedback when drag leaves or drop occurs
-    dropArea.addEventListener("dragleave", () => {
-        dropArea.classList.remove("dragging");
-    });
-
+    // Handle file drop
     dropArea.addEventListener("drop", event => {
-        dropArea.classList.remove("dragging");  // Clean up after drop
+        const droppedFiles = event.dataTransfer.files;
+        if (!droppedFiles.length) return;
 
-        const files = event.dataTransfer.files;
-        if (!files.length) return;
+        for (let file of droppedFiles) {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.name = "files";
+            input.classList.add("form-control", "mb-3");
 
-        // Add the files to the file input container
-        for (const file of files) {
-            createFileInput(file);  // Add file with the remove button support
+            const dt = new DataTransfer();
+            dt.items.add(file);
+            input.files = dt.files;
+
+            container.appendChild(input);
         }
     });
 });

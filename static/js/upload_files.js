@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    const fileInputContainer = document.getElementById("fileInputContainer");
+    const fileInputContainer = document.getElementById("file-inputs-container");
     const allowedExtensions = ["jpg", "png", "pdf", "docx", "txt"];  // Define the allowed extensions
     const uploadedFiles = new Set();  // Keep track of uploaded files
 
     // Set uploading state to disable buttons/indicators during upload
     function setUploadingState(isUploading) {
-        const uploadButton = document.getElementById("uploadButton");
+        const uploadButton = document.getElementById("uploadFormButton");
         const fileInputs = fileInputContainer.querySelectorAll('input[type="file"]');
 
         if (isUploading) {
@@ -39,24 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
             addFileInputSlot();
         } else if (emptySlots.length > 1) {
             removeEmptyFileInputSlot();
-        }
-    }
-
-    // Add new file input slot dynamically
-    function addFileInputSlot() {
-        const newInput = document.createElement("input");
-        newInput.type = "file";
-        newInput.name = "files";
-        fileInputContainer.appendChild(newInput);
-    }
-
-    // Remove empty file input slot
-    function removeEmptyFileInputSlot() {
-        const fileInputs = fileInputContainer.querySelectorAll('input[type="file"]');
-        const lastEmptySlot = Array.from(fileInputs).reverse().find(input => !input.files.length);
-
-        if (lastEmptySlot) {
-            lastEmptySlot.remove();
         }
     }
 
@@ -249,6 +231,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Failed to delete file. Please try again.");
                 confirmBtn.disabled = false;
             });
+        });
+    }
+
+    // Add event listener to "+ Add File" button to create new file input
+    const addFileButton = document.getElementById("add-file-button");
+    if (addFileButton) {
+        addFileButton.addEventListener("click", () => {
+            const newInput = document.createElement("input");
+            newInput.type = "file";
+            newInput.classList.add("form-control", "mb-3"); // Ensure it has the same styling
+            newInput.name = "files";
+            fileInputContainer.appendChild(newInput);
         });
     }
 
