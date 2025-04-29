@@ -1,18 +1,22 @@
-// Show or hide the back-to-top button based on scroll position
-const backToTopButton = document.getElementById('back-to-top');
+// main.js
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-        backToTopButton.style.display = 'block';
-    } else {
-        backToTopButton.style.display = 'none';
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    setupBackToTopButton();
 });
 
-// Scroll to the top when the button is clicked
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+function setupBackToTopButton() {
+    const button = document.getElementById("back-to-top");
+
+    if (!button) return;
+
+    window.addEventListener("scroll", () => {
+        button.style.display = window.scrollY > 100 ? "block" : "none";
+    });
+
+    button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
 
 // Update the year in the footer
 document.getElementById('year').textContent = new Date().getFullYear();

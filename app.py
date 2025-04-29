@@ -62,8 +62,6 @@ def template():
     """Render the template testing page."""
     return render_template('testing/template.html')
 
-
-# File upload and processing
 @app.route('/uploads', methods=['POST'])
 def upload_file():
     """Handle file uploads and process the content."""
@@ -105,8 +103,7 @@ def upload_file():
             "sample_chunk": chunks[0] if chunks else ""
         })
 
-    return jsonify(responses)
-
+    return jsonify(responses)  # Ensure this is an array of responses
 
 @app.route("/delete_file", methods=["DELETE"])
 def delete_file():
@@ -118,25 +115,31 @@ def delete_file():
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     if os.path.exists(file_path):
         os.remove(file_path)
-        return "File deleted", 200
+        return jsonify({
+            "status": "File deleted", 
+            "refresh": True
+        })
     else:
-        return "File not found", 404
-
+        return jsonify({"status": "File not found"}), 404
 
 @app.route('/list_files')
 def list_files():
     """List all uploaded files."""
     files = []
 
-    if os.path.exists(app.config['UPLOAD_FOLDER']):
-        for file_name in os.listdir(app.config['UPLOAD_FOLDER']):
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
-            if os.path.isfile(file_path):
-                files.append({
-                    "name": file_name,
-                    "size": os.path.getsize(file_path),
-                    "url": f"/uploads/{file_name}"
-                })
+    try:
+        if os.path.exists(app.config['UPLOAD_FOLDER']):
+            for file_name in os.listdir(app.config['UPLOAD_FOLDER']):
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
+                if os.path.isfile(file_path):
+                    files.append({
+                        "name": file_name,
+                        "size": os.path.getsize(file_path),
+                        "url": f"/uploads/{file_name}"
+                    })
+    except Exception as e:
+        print(f"Error listing files: {e}")
+        return jsonify({"error": "Failed to list files"}), 500
 
     return jsonify(files)
 
