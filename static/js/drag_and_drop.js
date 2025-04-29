@@ -1,63 +1,49 @@
+// drag_and_drop.js
+
 document.addEventListener("DOMContentLoaded", () => {
-    const fileInputContainer = document.getElementById("file-inputs-container");
-    const addFileButton = document.getElementById("add-file-button");
-    const allowedExtensions = ["jpg", "png", "pdf", "docx", "txt"];
-    const uploadedFiles = new Set();
+    const dropArea = document.getElementById("drop-area");
+    const uploadForm = document.getElementById("upload-form");
+    const fileInput  = document.getElementById("file-input");
 
-    // Handle drag and drop functionality
-    const dropArea = document.getElementById("drag-drop-area");
-    
-    if (dropArea) {
-        dropArea.addEventListener("dragover", (event) => {
-            event.preventDefault();
-            dropArea.classList.add("drag-over");
+    if (!dropArea || !uploadForm || !fileInput) {
+        console.error("Missing required elements:", {
+            dropArea: !!dropArea,
+            uploadForm: !!uploadForm,
+            fileInput: !!fileInput
         });
-
-        dropArea.addEventListener("dragleave", () => {
-            dropArea.classList.remove("drag-over");
-        });
-
-        dropArea.addEventListener("drop", (event) => {
-            event.preventDefault();
-            dropArea.classList.remove("drag-over");
-            handleFiles(event.dataTransfer.files);
-        });
+        return;
     }
 
-    // Check if there are empty file input slots and add/remove new slots
-    function checkFileSlots() {
-        const fileInputs = fileInputContainer.querySelectorAll('input[type="file"]');
-        const emptySlots = Array.from(fileInputs).filter(input => !input.files.length);
+    ["dragenter", "dragover", "dragleave", "drop"].forEach(evtName => {
+        dropArea.addEventListener(evtName, e => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    });
 
-        if (emptySlots.length === 0) {
-            addFileInputSlot();
+    ["dragenter", "dragover"].forEach(evtName => {
+        dropArea.addEventListener(evtName, () => {
+            dropArea.classList.add("dragging");
+        });
+    });
+
+    ["dragleave", "drop"].forEach(evtName => {
+        dropArea.addEventListener(evtName, () => {
+            dropArea.classList.remove("dragging");
+        });
+    });
+
+    // Instead of auto-upload, just set the dropped files in the file input
+    dropArea.addEventListener("drop", e => {
+        const droppedFiles = e.dataTransfer.files;
+        if (!droppedFiles.length) return;
+        
+        // Create a new DataTransfer to populate file input
+        const dt = new DataTransfer();
+        for (let file of droppedFiles) {
+            dt.items.add(file);
         }
-    }
-
-    // Handle files dropped or selected
-    function handleFiles(files) {
-        Array.from(files).forEach(file => {
-            const extension = file.name.split(".").pop().toLowerCase();
-
-            if (!allowedExtensions.includes(extension)) {
-                alert(`Unsupported file type: "${file.name}". Allowed types: ${allowedExtensions.join(", ")}`);
-                return;
-            }
-
-            if (uploadedFiles.has(file.name)) {
-                alert(`Duplicate file: "${file.name}" has already been uploaded.`);
-                return;
-            }
-
-            uploadedFiles.add(file.name);
-            const newInput = document.createElement("input");
-            newInput.type = "file";
-            newInput.name = "files";
-            newInput.files = files;
-            newInput.classList.add("form-control", "mb-3");
-
-            // Append the new file input to the form
-            fileInputContainer.appendChild(newInput);
-        });
-    }
+        // Now the fileInput contains the dropped files
+        fileInput.files = dt.files;
+    });
 });
