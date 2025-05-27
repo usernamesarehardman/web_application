@@ -1,12 +1,13 @@
 import os
 import re
+import json
 import smtplib
 from flask import (
     Flask, request, render_template, send_from_directory, jsonify, redirect, 
     url_for, flash
 )
 from email.mime.text import MIMEText
-from parser import extract_text_from_pdf, extract_text_from_docx, chunk_text
+from utils.parser import extract_text_from_pdf, extract_text_from_docx, chunk_text
 
 # Flask app initialization
 app = Flask(
@@ -62,17 +63,25 @@ def template():
     """Render the template testing page."""
     return render_template('testing/template.html')
 
+# Routes for internal logic
+@app.route('/ingest', methods=['POST'])
+def ingest():
+    run_ingestion()
+    return jsonify({"status": "Ingestion complete"})
+
+
 @app.route('/uploads', methods=['POST'])
 def upload_file():
     """Handle file uploads and process the content."""
     if 'files' not in request.files:
         return 'No files part', 400
 
-    files = request.files.getlist('files')  # Get the list of uploaded files
+    files = request.files.getlist('files')
     if not files or all(file.filename == '' for file in files):
         return 'No selected files', 400
 
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+    os.makedirs("output", exist_ok=True)  # ensure output dir exists once
     responses = []
 
     for file in files:
@@ -83,7 +92,6 @@ def upload_file():
         file.save(upload_path)
 
         # Extract and chunk text
-        extracted_text = ""
         if file.filename.lower().endswith(".pdf"):
             extracted_text = extract_text_from_pdf(upload_path)
         elif file.filename.lower().endswith(".docx"):
@@ -96,6 +104,16 @@ def upload_file():
             continue
 
         chunks = chunk_text(extracted_text)
+
+        # Save structured output to JSON
+        output_filename = os.path.splitext(file.filename)[0] + ".json"
+        output_path = os.path.join("output", output_filename)
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "filename": file.filename,
+                "chunks": chunks
+            }, f, indent=2, ensure_ascii=False)
+
         responses.append({
             "filename": file.filename,
             "status": "Processed successfully",
@@ -103,7 +121,7 @@ def upload_file():
             "sample_chunk": chunks[0] if chunks else ""
         })
 
-    return jsonify(responses)  # Ensure this is an array of responses
+    return jsonify(responses)
 
 @app.route("/delete_file", methods=["DELETE"])
 def delete_file():
